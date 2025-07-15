@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  dbt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # This mounts your local dbt project files into the container,
+      # so changes you make locally are reflected instantly.
+      - .:/usr/app/dbt
+      # This mounts your local GCP credentials into the container
+      - ~/.config/gcloud:/root/.config/gcloud
+    # This keeps the container running so you can execute commands in it
+    entrypoint: ""
+    command: "sleep infinity"

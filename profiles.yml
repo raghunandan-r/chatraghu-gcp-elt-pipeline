@@ -1,0 +1,14 @@
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/core/connect-data-platform/bigquery-setup
+
+chatraghu_dbt: # This should match the name in your dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: subtle-poet-311614 #
+      dataset: analytics # This is the dataset where dbt will build your production tables
+      threads: 4
+      location: us-east1 # The location of your BigQuery dataset
+      priority: interactive

@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: staging_eval_results_raw
+    database: subtle-poet-311614
+    schema: staging_eval_results_raw
+    tables:
+      - name: daily_load
