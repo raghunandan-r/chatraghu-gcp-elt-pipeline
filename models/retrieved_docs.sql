@@ -18,7 +18,7 @@ SELECT
     t.graph_version,
     t.timestamp_start,
     doc.content as doc_content,
-    doc.score as doc_score,
+    CAST(doc.score AS FLOAT64) as doc_score,
     doc.metadata as doc_metadata
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
