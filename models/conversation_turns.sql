@@ -8,7 +8,8 @@
       "data_type": "timestamp",
       "granularity": "day"
     },
-    unique_key=['run_id', 'thread_id', 'turn_index']
+    unique_key=['run_id', 'thread_id', 'turn_index'],
+    on_schema_change='append_new_columns'
 ) }}
 
 SELECT
