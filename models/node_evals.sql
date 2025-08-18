@@ -17,7 +17,21 @@ SELECT
     t.turn_index,
     t.timestamp_start,
     t.graph_version,
-    eval.* EXCEPT (explanation)
+    eval.node_name,
+    eval.evaluator_name,
+    eval.timestamp,
+    eval.overall_success,
+    eval.prompt_tokens,
+    eval.completion_tokens,
+    COALESCE(eval.classification, 'unknown') as classification,
+    eval.format_valid,
+    COALESCE(eval.persona_adherence, FALSE) as persona_adherence,
+    eval.follows_rules,
+    COALESCE(eval.faithfulness, FALSE) as faithfulness,
+    COALESCE(eval.answer_relevance, FALSE) as answer_relevance, 
+    COALESCE(eval.handles_irrelevance, FALSE) as handles_irrelevance,
+    COALESCE(eval.context_relevance, FALSE) as context_relevance,
+    COALESCE(eval.includes_key_info, FALSE) as includes_key_info
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
     UNNEST(t.evaluations) AS eval

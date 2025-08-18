@@ -7,5 +7,6 @@ WORKDIR /usr/app/dbt
 # Copy your dbt project files into the container
 COPY . .
 
-# This tells dbt where to find the profiles.yml file inside the container
-ENV DBT_PROFILES_DIR=.
+# Create the profiles.yml for production directly in the image
+RUN mkdir -p /root/.dbt && \
+    echo "chatraghu_dbt:\n  target: prod\n  outputs:\n    prod:\n      type: bigquery\n      method: oauth\n      project: subtle-poet-311614\n      dataset: analytics\n      threads: 4\n      location: us-east1\n      priority: interactive" > /root/.dbt/profiles.yml

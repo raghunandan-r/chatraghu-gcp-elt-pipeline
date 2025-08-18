@@ -1,4 +1,7 @@
 /secrets
-/logs
+logs/
 profiles.yml
+.idea/
+target/
+dbt_packages/
 gemini.md

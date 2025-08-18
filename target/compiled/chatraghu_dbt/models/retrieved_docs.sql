@@ -10,11 +10,9 @@ SELECT
     t.graph_version,
     t.timestamp_start,
     doc.content as doc_content,
-    doc.score as doc_score,
+    CAST(doc.score AS FLOAT64) as doc_score,
     doc.metadata as doc_metadata
 FROM
     `subtle-poet-311614`.`staging_eval_results_raw`.`daily_load` AS t,
     UNNEST(t.retrieved_docs) AS doc
 
-
-WHERE t.timestamp_start > (SELECT MAX(timestamp_start) FROM `subtle-poet-311614`.`analytics`.`retrieved_docs`)

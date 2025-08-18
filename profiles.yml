@@ -8,7 +8,7 @@ chatraghu_dbt: # This should match the name in your dbt_project.yml
       type: bigquery
       method: oauth
       project: subtle-poet-311614 #
-      dataset: analytics # This is the dataset where dbt will build your production tables
+      dataset: analytics #dbt_raghu_dev # # This is the dataset where dbt will build your production tables
       threads: 4
       location: us-east1 # The location of your BigQuery dataset
       priority: interactive

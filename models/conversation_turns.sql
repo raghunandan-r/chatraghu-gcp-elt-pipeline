@@ -21,7 +21,11 @@ SELECT
     query,
     response,
     total_latency_ms,
-    graph_latency_ms,
+    CASE 
+        WHEN graph_latency_ms IS NULL OR graph_latency_ms = '' OR graph_latency_ms = 'NULL' THEN NULL 
+        ELSE SAFE_CAST(graph_latency_ms AS FLOAT64) 
+    END AS graph_latency_ms,
+    time_to_first_token_ms
     evaluation_latency_ms,
     graph_total_prompt_tokens,
     graph_total_completion_tokens,

@@ -889,3 +889,221 @@ WHERE t.timestamp_start > (SELECT MAX(timestamp_start) FROM `subtle-poet-311614`
 [0m02:59:01.330651 [debug] [MainThread]: Command `dbt run` succeeded at 02:59:01.330586 after 4.41 seconds
 [0m02:59:01.330867 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74528bd33610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74528bd31b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745245fc2d10>]}
 [0m02:59:01.331082 [debug] [MainThread]: Flushing usage events
+[0m03:27:07.945405 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97ea0c3250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97e9f04390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97ea46b490>]}
+
+
+============================== 03:27:07.951626 | 44f7d996-7a56-4dcd-a800-47b0e39698f8 ==============================
+[0m03:27:07.951626 [info ] [MainThread]: Running with dbt=1.8.0
+[0m03:27:07.952272 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/usr/app/dbt/logs', 'fail_fast': 'False', 'profiles_dir': '.', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt run --select retrieved_docs --full-refresh', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m03:27:08.992008 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b3dffd50>]}
+[0m03:27:09.063110 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97ebe17d90>]}
+[0m03:27:09.064072 [info ] [MainThread]: Registered adapter: bigquery=1.8.0
+[0m03:27:09.086684 [debug] [MainThread]: checksum: dbb12d416fdb55e3665e4828703bbedf40c5c90ed7ca6ff39bbbfb29b12b0a92, vars: {}, profile: , target: , version: 1.8.0
+[0m03:27:09.178029 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m03:27:09.178974 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97eb680a10>]}
+[0m03:27:10.553525 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b83d0850>]}
+[0m03:27:10.657636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b38460d0>]}
+[0m03:27:10.658274 [info ] [MainThread]: Found 3 models, 1 source, 469 macros
+[0m03:27:10.658710 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b3aa2050>]}
+[0m03:27:10.661139 [info ] [MainThread]: 
+[0m03:27:10.662033 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m03:27:10.663521 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_subtle-poet-311614'
+[0m03:27:10.664210 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:27:11.261177 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_subtle-poet-311614, now list_subtle-poet-311614_dbt_raghu_dev)
+[0m03:27:11.262962 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m03:27:11.659336 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b3adbc90>]}
+[0m03:27:11.661192 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:27:11.662046 [info ] [MainThread]: 
+[0m03:27:11.672787 [debug] [Thread-1 (]: Began running node model.chatraghu_dbt.retrieved_docs
+[0m03:27:11.673511 [info ] [Thread-1 (]: 1 of 1 START sql incremental model dbt_raghu_dev.retrieved_docs ................ [RUN]
+[0m03:27:11.674472 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_subtle-poet-311614_dbt_raghu_dev, now model.chatraghu_dbt.retrieved_docs)
+[0m03:27:11.675279 [debug] [Thread-1 (]: Began compiling node model.chatraghu_dbt.retrieved_docs
+[0m03:27:11.689118 [debug] [Thread-1 (]: Writing injected SQL for node "model.chatraghu_dbt.retrieved_docs"
+[0m03:27:11.690250 [debug] [Thread-1 (]: Began executing node model.chatraghu_dbt.retrieved_docs
+[0m03:27:11.763133 [debug] [Thread-1 (]: Writing runtime sql for node "model.chatraghu_dbt.retrieved_docs"
+[0m03:27:11.764337 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m03:27:11.764902 [debug] [Thread-1 (]: On model.chatraghu_dbt.retrieved_docs: /* {"app": "dbt", "dbt_version": "1.8.0", "profile_name": "chatraghu_dbt", "target_name": "dev", "node_id": "model.chatraghu_dbt.retrieved_docs"} */
+
+  
+    
+
+    create or replace table `subtle-poet-311614`.`dbt_raghu_dev`.`retrieved_docs`
+      
+    partition by timestamp_trunc(timestamp_start, day)
+    
+
+    OPTIONS()
+    as (
+      -- models/retrieved_docs.sql
+-- This model unnests the retrieved_docs array to create one row per document.
+
+
+
+SELECT
+    t.run_id,
+    t.thread_id,
+    t.turn_index,
+    t.graph_version,
+    t.timestamp_start,
+    doc.content as doc_content,
+    CAST(doc.score AS FLOAT64) as doc_score,
+    doc.metadata as doc_metadata
+FROM
+    `subtle-poet-311614`.`staging_eval_results_raw`.`daily_load` AS t,
+    UNNEST(t.retrieved_docs) AS doc
+
+
+    );
+  
+[0m03:27:12.375784 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=subtle-poet-311614&j=bq:us-east1:9660588c-4cd4-4e17-83f7-ecd06c011310&page=queryresults
+[0m03:27:12.377532 [debug] [Thread-1 (]: BigQuery adapter: Unhandled error while running:
+/* {"app": "dbt", "dbt_version": "1.8.0", "profile_name": "chatraghu_dbt", "target_name": "dev", "node_id": "model.chatraghu_dbt.retrieved_docs"} */
+
+  
+    
+
+    create or replace table `subtle-poet-311614`.`dbt_raghu_dev`.`retrieved_docs`
+      
+    partition by timestamp_trunc(timestamp_start, day)
+    
+
+    OPTIONS()
+    as (
+      -- models/retrieved_docs.sql
+-- This model unnests the retrieved_docs array to create one row per document.
+
+
+
+SELECT
+    t.run_id,
+    t.thread_id,
+    t.turn_index,
+    t.graph_version,
+    t.timestamp_start,
+    doc.content as doc_content,
+    CAST(doc.score AS FLOAT64) as doc_score,
+    doc.metadata as doc_metadata
+FROM
+    `subtle-poet-311614`.`staging_eval_results_raw`.`daily_load` AS t,
+    UNNEST(t.retrieved_docs) AS doc
+
+
+    );
+  
+[0m03:27:12.378423 [debug] [Thread-1 (]: BigQuery adapter: 404 Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1; reason: notFound, message: Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1
+
+Location: us-east1
+Job ID: 9660588c-4cd4-4e17-83f7-ecd06c011310
+
+[0m03:27:12.411955 [debug] [Thread-1 (]: Runtime Error in model retrieved_docs (models/retrieved_docs.sql)
+  404 Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1; reason: notFound, message: Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1
+  
+  Location: us-east1
+  Job ID: 9660588c-4cd4-4e17-83f7-ecd06c011310
+  
+[0m03:27:12.415385 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '44f7d996-7a56-4dcd-a800-47b0e39698f8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97b38c3e10>]}
+[0m03:27:12.417170 [error] [Thread-1 (]: 1 of 1 ERROR creating sql incremental model dbt_raghu_dev.retrieved_docs ....... [[31mERROR[0m in 0.74s]
+[0m03:27:12.418610 [debug] [Thread-1 (]: Finished running node model.chatraghu_dbt.retrieved_docs
+[0m03:27:12.424546 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:27:12.425035 [debug] [MainThread]: Connection 'model.chatraghu_dbt.retrieved_docs' was properly closed.
+[0m03:27:12.426162 [info ] [MainThread]: 
+[0m03:27:12.427101 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 1.76 seconds (1.76s).
+[0m03:27:12.428733 [debug] [MainThread]: Command end result
+[0m03:27:12.476909 [info ] [MainThread]: 
+[0m03:27:12.477843 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m03:27:12.478415 [info ] [MainThread]: 
+[0m03:27:12.479145 [error] [MainThread]:   Runtime Error in model retrieved_docs (models/retrieved_docs.sql)
+  404 Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1; reason: notFound, message: Not found: Dataset subtle-poet-311614:dbt_raghu_dev was not found in location us-east1
+  
+  Location: us-east1
+  Job ID: 9660588c-4cd4-4e17-83f7-ecd06c011310
+  
+[0m03:27:12.479665 [info ] [MainThread]: 
+[0m03:27:12.480787 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m03:27:12.484213 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 4.59814, "process_user_time": 4.054513, "process_kernel_time": 1.884605, "process_mem_max_rss": "204352", "process_in_blocks": "5760", "process_out_blocks": "2848", "command_success": false}
+[0m03:27:12.485117 [debug] [MainThread]: Command `dbt run` failed at 03:27:12.484906 after 4.60 seconds
+[0m03:27:12.485641 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97ea0b6990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97e9f25fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b97ed85a890>]}
+[0m03:27:12.486158 [debug] [MainThread]: Flushing usage events
+[0m03:28:05.369255 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775767fde010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775767e23610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775767e216d0>]}
+
+
+============================== 03:28:05.372463 | cc27b009-8487-41b6-b915-39066adfd787 ==============================
+[0m03:28:05.372463 [info ] [MainThread]: Running with dbt=1.8.0
+[0m03:28:05.373081 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'debug': 'False', 'warn_error': 'None', 'log_path': '/usr/app/dbt/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select retrieved_docs --full-refresh', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m03:28:06.426647 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775731dabb90>]}
+[0m03:28:06.494589 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775769d4c1d0>]}
+[0m03:28:06.495700 [info ] [MainThread]: Registered adapter: bigquery=1.8.0
+[0m03:28:06.507258 [debug] [MainThread]: checksum: dbb12d416fdb55e3665e4828703bbedf40c5c90ed7ca6ff39bbbfb29b12b0a92, vars: {}, profile: , target: , version: 1.8.0
+[0m03:28:06.632492 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:28:06.632978 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:28:06.679385 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775731b16510>]}
+[0m03:28:06.909110 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775731c000d0>]}
+[0m03:28:06.910401 [info ] [MainThread]: Found 3 models, 1 source, 469 macros
+[0m03:28:06.911572 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775731c23050>]}
+[0m03:28:06.915855 [info ] [MainThread]: 
+[0m03:28:06.917136 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m03:28:06.918937 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_subtle-poet-311614'
+[0m03:28:06.919509 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:28:07.482587 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_subtle-poet-311614, now list_subtle-poet-311614_dbt_raghu_dev)
+[0m03:28:07.484433 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m03:28:07.876176 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77576823f990>]}
+[0m03:28:07.877575 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:28:07.878298 [info ] [MainThread]: 
+[0m03:28:07.889570 [debug] [Thread-1 (]: Began running node model.chatraghu_dbt.retrieved_docs
+[0m03:28:07.891010 [info ] [Thread-1 (]: 1 of 1 START sql incremental model dbt_raghu_dev.retrieved_docs ................ [RUN]
+[0m03:28:07.891971 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_subtle-poet-311614_dbt_raghu_dev, now model.chatraghu_dbt.retrieved_docs)
+[0m03:28:07.892329 [debug] [Thread-1 (]: Began compiling node model.chatraghu_dbt.retrieved_docs
+[0m03:28:07.910177 [debug] [Thread-1 (]: Writing injected SQL for node "model.chatraghu_dbt.retrieved_docs"
+[0m03:28:07.911005 [debug] [Thread-1 (]: Began executing node model.chatraghu_dbt.retrieved_docs
+[0m03:28:07.998956 [debug] [Thread-1 (]: Writing runtime sql for node "model.chatraghu_dbt.retrieved_docs"
+[0m03:28:08.000116 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m03:28:08.001042 [debug] [Thread-1 (]: On model.chatraghu_dbt.retrieved_docs: /* {"app": "dbt", "dbt_version": "1.8.0", "profile_name": "chatraghu_dbt", "target_name": "dev", "node_id": "model.chatraghu_dbt.retrieved_docs"} */
+
+  
+    
+
+    create or replace table `subtle-poet-311614`.`dbt_raghu_dev`.`retrieved_docs`
+      
+    partition by timestamp_trunc(timestamp_start, day)
+    
+
+    OPTIONS()
+    as (
+      -- models/retrieved_docs.sql
+-- This model unnests the retrieved_docs array to create one row per document.
+
+
+
+SELECT
+    t.run_id,
+    t.thread_id,
+    t.turn_index,
+    t.graph_version,
+    t.timestamp_start,
+    doc.content as doc_content,
+    CAST(doc.score AS FLOAT64) as doc_score,
+    doc.metadata as doc_metadata
+FROM
+    `subtle-poet-311614`.`staging_eval_results_raw`.`daily_load` AS t,
+    UNNEST(t.retrieved_docs) AS doc
+
+
+    );
+  
+[0m03:28:08.797940 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=subtle-poet-311614&j=bq:us-east1:5b48f1cf-56b1-4b5f-9547-957c91f836c9&page=queryresults
+[0m03:28:11.071324 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cc27b009-8487-41b6-b915-39066adfd787', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775731c022d0>]}
+[0m03:28:11.072501 [info ] [Thread-1 (]: 1 of 1 OK created sql incremental model dbt_raghu_dev.retrieved_docs ........... [[32mCREATE TABLE (3.0 rows, 3.9 KiB processed)[0m in 3.18s]
+[0m03:28:11.073700 [debug] [Thread-1 (]: Finished running node model.chatraghu_dbt.retrieved_docs
+[0m03:28:11.077571 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:28:11.077937 [debug] [MainThread]: Connection 'model.chatraghu_dbt.retrieved_docs' was properly closed.
+[0m03:28:11.078300 [info ] [MainThread]: 
+[0m03:28:11.078976 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 4.16 seconds (4.16s).
+[0m03:28:11.079903 [debug] [MainThread]: Command end result
+[0m03:28:11.110368 [info ] [MainThread]: 
+[0m03:28:11.111196 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m03:28:11.111720 [info ] [MainThread]: 
+[0m03:28:11.112357 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m03:28:11.114479 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.804095, "process_user_time": 3.216098, "process_kernel_time": 1.850357, "process_mem_max_rss": "197204", "process_out_blocks": "1904", "process_in_blocks": "0"}
+[0m03:28:11.115154 [debug] [MainThread]: Command `dbt run` succeeded at 03:28:11.115003 after 5.80 seconds
+[0m03:28:11.115695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77576b690bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775733722550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77576b776850>]}
+[0m03:28:11.116181 [debug] [MainThread]: Flushing usage events

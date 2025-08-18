@@ -35,6 +35,82 @@ These are the foundational steps that have been completed to prepare the cloud a
 
 ---
 
+## 1. Local Development Environment
+
+-   **`profiles.yml` Location:** Your local `profiles.yml` file (typically `~/.dbt/profiles.yml`) should be configured to point to a **development-specific BigQuery dataset**.
+    -   **Example:**
+        ```yaml
+        chatraghu_dbt:
+          target: dev
+          outputs:
+            dev:
+              type: bigquery
+              method: oauth
+              project: your-gcp-project-id
+              dataset: dbt_your_username_dev # <--- CRITICAL: Use a dedicated dev dataset
+              threads: 4
+        ```
+-   **Purpose:** This ensures that any `dbt run` or `dbt test` commands executed from your local machine (or via `docker-compose exec dbt ...`) only affect your development environment, preventing accidental modifications to production data.
+-   **Git Ignore:** The local `profiles.yml` **must** be ignored by Git (add `profiles.yml` to your `.gitignore`) to prevent it from being committed to the repository.
+
+## 2. Docker Image for Production Deployment
+
+-   **Purpose:** The dbt models are packaged into a Docker image, which is then pushed to Google Artifact Registry. This image is used by the Cloud Run job for production transformations.
+-   **`Dockerfile` Configuration:**
+    -   The `Dockerfile` should copy the dbt project code into the image.
+    -   **Crucially, the `profiles.yml` for production must be embedded directly into the Docker image.** This makes the image self-contained and independent of external configuration files or environment variables for basic profile setup.
+    -   **Example `Dockerfile` Snippet:**
+        ```dockerfile
+        # Use the official dbt-bigquery image
+        FROM ghcr.io/dbt-labs/dbt-bigquery:1.8.0
+
+        # Set the working directory inside the container
+        WORKDIR /usr/app/dbt
+
+        # Copy your dbt project files into the container
+        # NOTE: .dockerignore prevents local profiles.yml from being copied
+        COPY . .
+
+        # Create the profiles.yml for production directly in the image
+        # This ensures the production environment always has the correct profile
+        RUN mkdir -p /root/.dbt && \
+            echo "chatraghu_dbt:\n  target: prod\n  outputs:\n    prod:\n      type: bigquery\n      method: oauth\n      project: subtle-poet-311614\n      dataset: analytics\n      threads: 4\n      location: us-east1\n      priority: interactive" > /root/.dbt/profiles.yml
+        ```
+-   **`.dockerignore`:** A `.dockerignore` file **must** be present in the root of your project. This file specifies which local files and directories should *not* be copied into the Docker image during the build process.
+    -   **Example `.dockerignore` Content:**
+        ```
+        # Ignore files not needed in the final image
+        .dockerignore
+        .git/
+        .gitignore
+        .idea/
+        logs/
+        target/
+        dbt_packages/
+        # Crucially, ignore the local profiles file
+        profiles.yml
+        ```
+-   **Building and Pushing:**
+    -   Authenticate Docker with Google Artifact Registry:
+        `gcloud auth configure-docker us-east1-docker.pkg.dev`
+    -   Build and push the Docker image:
+        `docker build -t us-east1-docker.pkg.dev/subtle-poet-311614/dbt-repo/dbt-runner:latest . && docker push us-east1-docker.pkg.dev/subtle-poet-311614/dbt-repo/dbt-runner:latest`
+
+## 3. GCP Cloud Run Job (`dbt-transform`) will be referenced later.
+
+-   **Purpose:** The `dbt-transform` Cloud Run job is scheduled to execute the dbt transformations in the production environment.
+-   **Image Source:** The job pulls the Docker image from Google Artifact Registry (e.g., `us-east1-docker.pkg.dev/subtle-poet-311614/dbt-repo/dbt-runner:latest`).
+-   **Container Command and Arguments:**
+    -   **Container command:** `dbt` (This is the entrypoint for the dbt CLI within the container).
+    -   **Container arguments:** `run --target prod` (This tells dbt to execute the `run` command and explicitly use the `prod` target defined in the embedded `profiles.yml`).
+-   **One-Time Full Refresh (for schema changes):**
+    -   When a schema change (like a data type correction) requires a full table rebuild in production, the arguments must be temporarily updated for a single run:
+        `run --select your_model_name --full-refresh --target prod`
+    -   **CRITICAL:** After the successful full refresh, revert the arguments back to `run --target prod` to resume incremental processing.
+
+This structured approach ensures a clear separation between development and production environments, and a robust deployment pipeline for your dbt projects.
+
+
 ## Phase 2: The Automated ELT Workflow
 
 This two-step, serverless process runs automatically to load and transform data.
@@ -466,3 +542,4 @@ To set up the dbt transformation job, apply the learnings above:
 ---
 ## Gemini CLI Context
 > When working on Step 2 of the ELT pipeline, assume the architecture and security principles outlined in this document are the intended plan. The key components are a dedicated service account (`pubsub-cloud-run-invoker@subtle-poet-311614.iam.gserviceaccount.com`) acting as the identity for Pub/Sub push subscriptions, and the `Cloud Run Invoker` role being granted on each Cloud Run service.
+

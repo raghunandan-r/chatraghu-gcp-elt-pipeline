@@ -1,0 +1,9 @@
+# Ignore files not needed in the final image
+.dockerignore
+.git
+.gitignore
+.idea/
+logs/
+target/
+# Crucially, ignore the local profiles file
+profiles.yml
