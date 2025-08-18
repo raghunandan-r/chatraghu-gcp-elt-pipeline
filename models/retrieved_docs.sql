@@ -22,8 +22,14 @@ SELECT
     doc.metadata as doc_metadata
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
-    UNNEST(t.retrieved_docs) AS doc
+    UNNEST(
+        CASE 
+            WHEN t.retrieved_docs IS NULL THEN []
+            WHEN JSON_TYPE(t.retrieved_docs) = 'array' THEN t.retrieved_docs
+            ELSE []
+        END
+    ) AS doc
 
 {% if is_incremental() %}
 WHERE t.timestamp_start > (SELECT MAX(timestamp_start) FROM {{ this }})
-{% endif %}
+{% endif %} 

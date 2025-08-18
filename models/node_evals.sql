@@ -25,7 +25,7 @@ SELECT
     eval.completion_tokens,
     COALESCE(eval.classification, 'unknown') as classification,
     eval.format_valid,
-    COALESCE(eval.persona_adherence, FALSE) as persona_adherence,
+    eval.persona_adherence,
     eval.follows_rules,
     COALESCE(eval.faithfulness, FALSE) as faithfulness,
     COALESCE(eval.answer_relevance, FALSE) as answer_relevance, 
