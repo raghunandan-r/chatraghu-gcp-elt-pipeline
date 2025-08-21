@@ -5,5 +5,7 @@
 .idea/
 logs/
 target/
+backfills/
+backfill_env/
 # Crucially, ignore the local profiles file
 profiles.yml

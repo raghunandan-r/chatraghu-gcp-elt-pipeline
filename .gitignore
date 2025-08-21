@@ -4,4 +4,6 @@ profiles.yml
 .idea/
 target/
 dbt_packages/
+backfills/
+backfill_env/
 gemini.md
