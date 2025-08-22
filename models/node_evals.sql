@@ -25,9 +25,6 @@ SELECT
     eval.prompt_tokens,
     eval.completion_tokens,
     COALESCE(eval.classification, 'unknown') as classification,
-    COALESCE(CAST(JSON_VALUE(TO_JSON_STRING(eval), '$.persona_adherence') AS BOOL), FALSE) as persona_adherence, -- ghosts of christmas past.
-    COALESCE(CAST(JSON_VALUE(TO_JSON_STRING(eval), '$.follows_rules') AS BOOL), FALSE) as follows_rules,
-    COALESCE(CAST(JSON_VALUE(TO_JSON_STRING(eval), '$.format_valid') AS BOOL), FALSE) as format_valid,    
     COALESCE(eval.faithfulness, FALSE) as faithfulness,
     COALESCE(eval.answer_relevance, FALSE) as answer_relevance,
     COALESCE(eval.handles_irrelevance, FALSE) as handles_irrelevance,
