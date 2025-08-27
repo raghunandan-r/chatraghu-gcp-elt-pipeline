@@ -24,12 +24,15 @@ SELECT
     eval.overall_success,
     eval.prompt_tokens,
     eval.completion_tokens,
-    COALESCE(eval.classification, 'unknown') as classification,
-    COALESCE(eval.faithfulness, FALSE) as faithfulness,
-    COALESCE(eval.answer_relevance, FALSE) as answer_relevance,
-    COALESCE(eval.handles_irrelevance, FALSE) as handles_irrelevance,
-    COALESCE(eval.context_relevance, FALSE) as context_relevance,
-    COALESCE(eval.includes_key_info, FALSE) as includes_key_info
+    eval.classification,
+    eval.faithfulness, 
+    eval.answer_relevance, 
+    eval.handles_irrelevance,
+    eval.includes_key_info, 
+    eval.routing_correct, 
+    eval.response_appropriateness, 
+    eval.history_relevance, 
+    eval.document_relevance
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
     UNNEST(t.evaluations) AS eval

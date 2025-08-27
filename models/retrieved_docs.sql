@@ -17,12 +17,11 @@ SELECT
     t.turn_index,
     t.graph_version,
     t.timestamp_start,
-    JSON_VALUE(doc_json, '$.content') as doc_content,
-    CAST(JSON_VALUE(doc_json, '$.score') AS FLOAT64) as doc_score,
-    JSON_VALUE(doc_json, '$.metadata') as doc_metadata
+    doc.content as doc_content,
+    doc.score as doc_score
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
-    UNNEST(t.retrieved_docs) AS doc_json
+    UNNEST(t.retrieved_docs) AS doc
 WHERE t.retrieved_docs IS NOT NULL 
   AND ARRAY_LENGTH(t.retrieved_docs) > 0
 
