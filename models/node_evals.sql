@@ -32,7 +32,9 @@ SELECT
     eval.routing_correct, 
     eval.response_appropriateness, 
     eval.history_relevance, 
-    eval.document_relevance
+    eval.document_relevance,
+    eval.is_safe,
+    eval.is_clear
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
     UNNEST(t.evaluations) AS eval
