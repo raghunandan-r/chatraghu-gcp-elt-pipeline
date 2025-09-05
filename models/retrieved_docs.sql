@@ -28,7 +28,7 @@ SELECT
     doc.metadata.rerank_score as doc_metadata_rerank_score,
     doc.metadata.score_by_source as doc_metadata_score_by_source,
     doc.metadata.index_source as doc_metadata_index_source,
-    doc.metadata.namespace as doc_metadata_namespace,
+    doc.metadata.namespace as doc_metadata_namespace
 
 FROM
     {{ source('staging_eval_results_raw', 'daily_load') }} AS t,
