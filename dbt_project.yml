@@ -19,3 +19,15 @@ clean-targets:
 models:
   chatraghu_dbt:
       +materialized: view
+
+# Pricing configuration for different model versions
+vars:
+  # i1.0.0 pricing (per million tokens)
+  i1_0_0_prompt_price: 0.4
+  i1_0_0_completion_price: 1.6
+  
+  # i1.0.1 pricing (per million tokens)
+  i1_0_1_graph_prompt_price: 0.15
+  i1_0_1_eval_prompt_price: 0.04
+  i1_0_1_graph_completion_price: 0.6
+  i1_0_1_eval_completion_price: 0.15

@@ -8,13 +8,14 @@
       "data_type": "timestamp",
       "granularity": "day"
     },
-    unique_key=['run_id', 'thread_id', 'turn_index']
+    unique_key=['run_id', 'thread_id', 'turn_index'],
+    on_schema_change='append_new_columns'
 ) }}
 
 SELECT
     t.run_id,
     t.thread_id,
-    t.turn_index,
+    t.turn_index + 1 as turn_index,
     t.graph_version,
     t.timestamp_start,
     doc.content as doc_content,

@@ -15,7 +15,7 @@
 SELECT
     run_id,
     thread_id,
-    turn_index,
+    turn_index + 1 as turn_index,
     graph_version,
     timestamp_start,
     timestamp_end,

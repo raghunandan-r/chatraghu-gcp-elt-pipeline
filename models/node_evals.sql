@@ -15,7 +15,7 @@
 SELECT
     t.run_id,
     t.thread_id,
-    t.turn_index,
+    t.turn_index + 1 as turn_index,
     t.timestamp_start,
     t.graph_version,
     eval.node_name,
