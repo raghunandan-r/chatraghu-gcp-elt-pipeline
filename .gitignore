@@ -7,3 +7,4 @@ dbt_packages/
 backfills/
 backfill_env/
 gemini.md
+dbt_internal_packages/

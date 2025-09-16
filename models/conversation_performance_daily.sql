@@ -77,4 +77,4 @@ SELECT
 
 FROM latency_conversions
 GROUP BY conversation_date, graph_version
-ORDER BY conversation_date DESC, graph_version
+-- ORDER BY conversation_date DESC, graph_version

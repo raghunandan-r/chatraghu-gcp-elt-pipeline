@@ -45,4 +45,4 @@ SELECT
   COUNT(*) as query_count
 FROM costs_per_individual_query
 GROUP BY DATE(timestamp_start), graph_version
-ORDER BY date, graph_version
+-- ORDER BY date, graph_version

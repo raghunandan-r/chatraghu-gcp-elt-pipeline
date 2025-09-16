@@ -29,11 +29,8 @@ WITH evaluation_base AS (
         is_clear,
         is_safe,
         document_relevance,
-        context_relevance,
+        history_relevance,
         response_appropriateness,
-        persona_adherence,
-        format_valid,
-        follows_rules,
         DATE(timestamp) AS evaluation_date,
 
         -- Determine execution path
@@ -158,8 +155,8 @@ SELECT
     ROUND(safety_rate * 100, 2) AS safety_pct
 
 FROM path_success_rates
-ORDER BY
-    evaluation_date DESC,
-    graph_version ASC,
-    execution_path ASC,
-    evaluator_name ASC
+-- ORDER BY
+--     evaluation_date DESC,
+--     graph_version ASC,
+--     execution_path ASC,
+--     evaluator_name ASC
